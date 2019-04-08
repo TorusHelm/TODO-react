@@ -6,7 +6,7 @@ import FooterMy from './components/FooterMy';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="page-wrapper">
         <HeaderMy />
         <MainMy />
         <FooterMy />
