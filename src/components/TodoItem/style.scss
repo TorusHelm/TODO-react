@@ -1,0 +1,63 @@
+$warning: #ffc107;
+
+.myCheck {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    height: 32px;
+    width: 32px;
+    display: block;
+    background-color: transparent;
+    border: 1px solid $warning;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 70%;
+        top: 20%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 0;
+        height: 0;
+        border-radius: 4px;
+        width: 15px;
+        height: 34px;
+    }
+    
+    &:checked {
+        animation: chpok .3s linear;
+        background-color: $warning;
+
+        &:before {
+            border-bottom: 4px solid #818182;
+            border-right: 4px solid #818182;
+            animation: check .2s ease;
+        }
+    }
+}
+
+@keyframes check {
+    from {
+        width: 0;
+        height: 0;
+    }
+    10% {
+        width: 15px;
+        height: 0;
+    }
+    to {
+        height: 34px;
+    }
+}
+
+@keyframes chpok {
+    from {
+        background: transparent;
+    }
+    to {
+        background: $warning;
+    }
+}
