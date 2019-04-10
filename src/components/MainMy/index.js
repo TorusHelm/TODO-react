@@ -1,22 +1,29 @@
 import React from 'react';
 import {Container} from 'react-bootstrap';
 import TodoItem from '../TodoItem';
-import vschoolProducts from '../../vschoolProducts';
+import todosData from '../../todosData';
 
-function MainMy() {
-    return (
-        <main>
-            <Container className="pt-3">
-                {vschoolProducts.map(item => <TodoItem products={{
-                    key: item.id,
-                    name: item.name,
-                    price: item.price,
-                    description: item.description
-                    }}
-                />)}
-            </Container>
-        </main>
-    )
+class MainMy extends React.Component {
+    
+    constructor() {
+        super()
+        this.state = {
+            todos: todosData
+        }
+    }
+
+    render() {
+
+        const todosItem = this.state.todos.map(item => <TodoItem key={item.id} products={item} />);
+        
+        return (
+            <main>
+                <Container className="pt-3">
+                    {todosItem}
+                </Container>
+            </main>
+        )
+    }
 }
 
 export default MainMy;
