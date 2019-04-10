@@ -12,9 +12,23 @@ class MainMy extends React.Component {
         }
     }
 
+    handleChange = (id) => {
+        this.setState(prevState => {
+            const updateTodos = prevState.todos.map(todo => {
+                if(todo.id === id) {
+                    todo.complited = !todo.complited
+                }
+                return todo
+            })
+            return {
+                todos: updateTodos
+            }
+        })
+    }
+
     render() {
 
-        const todosItem = this.state.todos.map(item => <TodoItem key={item.id} products={item} />);
+        const todosItem = this.state.todos.map(item => <TodoItem handleChange={this.handleChange} key={item.id} products={item} />);
         
         return (
             <main>
